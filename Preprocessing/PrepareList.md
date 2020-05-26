@@ -1,20 +1,21 @@
 # Prepare list of Ellenberg's values
 ## Download
-Download the official list from [Uni-Taschenbücher](https://www.utb-shop.de/downloads/dl/file/id/27/zusatzkapitel_zeigerwerte_der_pflanzen_mitteleuropas.pdf).
+Download the official list with Ellenberg's values for vascular plants, mosses and lichens from [Uni-Taschenbücher](https://www.utb-shop.de/downloads/dl/file/id/27/zusatzkapitel_zeigerwerte_der_pflanzen_mitteleuropas.pdf).
 
-## Extract content
-Convert the pdf into an open text file with [pdftotext](https://www.xpdfreader.com/pdftotext-man.html). The list with Ellenberg's values for vascular plants starts at page 7 and end with page 67.
+## Extract list for vascular plants
+### Extract content
+Convert the pdf into an open text file with [pdftotext](https://www.xpdfreader.com/pdftotext-man.html). The list with Ellenberg's values for vascular plants starts at page 7 and ends with page 67.
 ```bash
 pdftotext -layout -f 7 -l 67 zusatzkapitel_zeigerwerte_der_pflanzen_mitteleuropas.pdf EllenbergsValues.txt
 ```
 
-## Format the text file
+### Format the text file
 First, remove up to two spaces at the beginning of a line.
-Next, remove all lines containing the keywords `Zeigerwerte` or `Angaben`.
+Next, remove all empty lines or those containing the keywords `Zeigerwerte` or `Angaben`.
 Then, remove all but the first header.
 And last, delimite the file by tabs by converting multiple spaces into tabs while keeping the single space in the taxon name.
 ```bash
-for run in {1..2}; do sed -i 's/^\s//' EllenbergsValues.txt; done
+for run in {1..2}; do sed -i 's/^\s//' EllenbergsValues.txt; done # remove leading space(s)
 
 sed -i -r '/^$/d # remove all empty lines
 /Zeigerwerte|Angaben/d' EllenbergsValues.txt # remove all lines with keyword
