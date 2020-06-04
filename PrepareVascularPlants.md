@@ -10,24 +10,19 @@ pdftotext -layout -f 7 -l 67 zusatzkapitel_zeigerwerte_der_pflanzen_mitteleuropa
 ```
 
 ### Format the text file
-First, remove up to two spaces at the beginning of a line.
+First, remove leading space(s).
 Next, remove all empty lines or those containing the keywords `Zeigerwerte` or `Angaben` and replace emdash '–' with regular dash '-'.
-Then, remove all but the first header.
-And last, delimite the file by tabs by converting multiple spaces into tabs while keeping the single space in the taxon name.
+Then, complete the hyphenated *Veronica [...] aquatica*, delete line with its remainder in the following line and delete the last line.
+Last, remove all but the first header and delimite the file by tabs by converting multiple spaces into tabs while keeping the single space in the taxon name.
 ```bash
-for run in {1..2}; do sed -i 's/^\s//' EllenbergsValues.txt; done # remove leading space(s)
-
-sed -i -r '/^$/d # remove all empty lines
-/Zeigerwerte|Angaben/d # remove all lines with keyword
-s/–/-/g' EllenbergsValues.txt # replace emdash with dash
-
+sed -i -r 's/^ *//g # remove leading space(s)
+    /^$/d # remove all empty lines
+    /Zeigerwerte|Angaben/d # remove all lines with keyword
+    s/–/-/g # replace emdash with dash
+    s/aqua-/aquatica)/g # complete Veronica [...] aquatica
+    /^tica/d # delete line with hyphenated remainder
+    $ d' Ellenberg_VascularPlants.txt # delete last line
 
 sed -i '2,${ /Name/d }' EllenbergsValues.txt # starting with the second line, remove all lines with keyword
 sed -i -r 's/\s{2,}/\t/g' EllenbergsValues.txt # replace multiple spaces with tabs
-```
-
-### Restore hyphenated taxa
-```bash
-sed -i -r 's/aqua-/aquatica)/g # complete Veronica [...] aquatica
-/^tica/d' EllenbergsValues.txt # remove rest of word in the following line
 ```
