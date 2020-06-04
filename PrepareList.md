@@ -23,3 +23,9 @@ sed -i -r '/^$/d # remove all empty lines
 sed -i '2,${ /Name/d }' EllenbergsValues.txt # starting with the second line, remove all lines with keyword
 sed -i -r 's/\s{2,}/\t/g' EllenbergsValues.txt # replace multiple spaces with tabs
 ```
+
+### Restore hyphenated taxa
+```bash
+sed -i -r 's/aqua-/aquatica)/g # complete Veronica [...] aquatica
+/^tica/d' EllenbergsValues.txt # remove rest of word in the following line
+```
