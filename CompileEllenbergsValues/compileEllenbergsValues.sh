@@ -24,13 +24,24 @@ sed -i -r 's/^ *//g # remove leading space(s)
     s/–/-/g # replace emdash with dash
     s/aqua-/aquatica)/g # complete Veronica [...] aquatica
     /^tica/d # delete line with hyphenated remainder
+	s/Cuscuta lupuliformis *x *6 *6 *8 *8 *0 *Tvp *S/Cuscuta lupuliformis  x  6  6  8  -  8  0  Tvp  S/ # fill gap in C. lupuliformis
+	s/nummularium ovatum \(num\. obs\.\) 8/nummularium ovatum \(num\. obs\.\)\t8/g # Add tab after Helianthemum n.
     $ d' Ellenberg_VascularPlants.csv # delete last line
+
 
 sed -i '2,${ /Name/d }' Ellenberg_VascularPlants.csv # skip first line and remove all lines with keyword
 
 
 ## Replace multiple spaces with tabs (yields a tab delimited csv)
 sed -i -r 's/\s{2,}/\t/g' Ellenberg_VascularPlants.csv
+
+
+## Ensure tab for last column by negative lookbehind to comma (?<!,)
+perl -i -pe 's/(?<!,) I/\tI/g' Ellenberg_VascularPlants.csv
+perl -i -pe 's/(?<!,) W/\tW/g' Ellenberg_VascularPlants.csv
+perl -i -pe 's/(?<!,) S/\tS/g' Ellenberg_VascularPlants.csv
+perl -i -pe 's/(?<!,) V/\tV/g' Ellenberg_VascularPlants.csv
+
 
 
 ################################################################################
