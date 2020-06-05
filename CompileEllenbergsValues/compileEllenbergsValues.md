@@ -2,7 +2,7 @@
 To compile tab separated csv files with Ellenberg's values:
 1. Download the list
 1. Convert the pdf into an open text file with [pdftotext](https://www.xpdfreader.com/pdftotext-man.html).
-1. Structure the text with [sed](https://www.gnu.org/software/sed/).
+1. Structure the text with [sed](https://www.gnu.org/software/sed/) and [perl](https://www.perl.org/).
 
 Separate files are created for vascular plants, Bryophyta and lichens as they differ in available indicators.
 Later, they are merged into one file.
@@ -28,6 +28,7 @@ pdftotext -layout -f 7 -l 67 zusatzkapitel_zeigerwerte_der_pflanzen_mitteleuropa
 First, remove leading space(s).
 Next, remove all empty lines or those containing the keywords `Zeigerwerte` or `Angaben` and replace emdash '–' with regular dash '-'.
 Then, complete the hyphenated *Veronica [...] aquatica*, delete line with its remainder in the following line and delete the last line.
+Fill the gap with a dash for *Cuscuta lupuliformis* and add a tab after *Helianthemum nummularium ovatum (num. obs.)*.
 Last, remove all but the first header and delimite the file by tabs by converting multiple spaces into tabs while keeping the single space in the taxon name.
 ```bash
 sed -i -r 's/^ *//g # remove leading space(s)
@@ -36,10 +37,17 @@ sed -i -r 's/^ *//g # remove leading space(s)
     s/–/-/g # replace emdash with dash
     s/aqua-/aquatica)/g # complete Veronica [...] aquatica
     /^tica/d # delete line with hyphenated remainder
+    s/Cuscuta lupuliformis *x *6 *6 *8 *8 *0 *Tvp *S/Cuscuta lupuliformis  x  6  6  8  -  8  0  Tvp  S/ # fill gap in C. lupuliformis
+    s/nummularium ovatum \(num\. obs\.\) 8/nummularium ovatum \(num\. obs\.\)\t8/g # add tab after Helianthemum n.
     $ d' Ellenberg_VascularPlants.csv # delete last line
 
 sed -i '2,${ /Name/d }' Ellenberg_VascularPlants.csv # skip first line and remove all lines with keyword
 sed -i -r 's/\s{2,}/\t/g' Ellenberg_VascularPlants.csv # replace multiple spaces with tabs
+
+perl -i -pe 's/(?<!,) I/\tI/g' Ellenberg_VascularPlants.csv # ensure tab before last column by negative lookbehind to comma (?<!,)
+perl -i -pe 's/(?<!,) W/\tW/g' Ellenberg_VascularPlants.csv
+perl -i -pe 's/(?<!,) S/\tS/g' Ellenberg_VascularPlants.csv
+perl -i -pe 's/(?<!,) V/\tV/g' Ellenberg_VascularPlants.csv
 ```
 
 ## Compile list for Bryophyta
