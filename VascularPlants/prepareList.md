@@ -1,10 +1,13 @@
 # Prepare list of Ellenberg's values
+To compile tab separated csv files with Ellenberg's values:
 1. Download the list
 1. Convert the pdf into an open text file with [pdftotext](https://www.xpdfreader.com/pdftotext-man.html).
 1. Structure the text with [sed](https://www.gnu.org/software/sed/).
 
 Separate files are created for vascular plants, Bryophyta and lichens as they differ in available indicators.
 Later, they are merged into one file.
+
+All steps are unified in `compileEllenbergsValues.sh` that is ready to run on a Linux shell.
 
 
 ## Download
@@ -14,14 +17,14 @@ Download the official list with Ellenberg's values for vascular plants, mosses a
 wget https://www.utb-shop.de/downloads/dl/file/id/27/zusatzkapitel_zeigerwerte_der_pflanzen_mitteleuropas.pdf
 ```
 
-## Extract list for vascular plants
+## Compile list for vascular plants
 ### Extract content
-The list with Ellenberg's values for vascular plants starts at page 7 and ends with page 67.
+The list with Ellenberg's values for vascular plants starts at page 7 and ends at page 67.
 ```bash
 pdftotext -layout -f 7 -l 67 zusatzkapitel_zeigerwerte_der_pflanzen_mitteleuropas.pdf Ellenberg_VascularPlants.csv
 ```
 
-### Format the csv
+### Format csv
 First, remove leading space(s).
 Next, remove all empty lines or those containing the keywords `Zeigerwerte` or `Angaben` and replace emdash '–' with regular dash '-'.
 Then, complete the hyphenated *Veronica [...] aquatica*, delete line with its remainder in the following line and delete the last line.
@@ -36,20 +39,17 @@ sed -i -r 's/^ *//g # remove leading space(s)
     $ d' Ellenberg_VascularPlants.csv # delete last line
 
 sed -i '2,${ /Name/d }' Ellenberg_VascularPlants.csv # skip first line and remove all lines with keyword
-
-
-## Replace multiple spaces with tabs (yields a tab delimited csv)
-sed -i -r 's/\s{2,}/\t/g' Ellenberg_VascularPlants.csv
+sed -i -r 's/\s{2,}/\t/g' Ellenberg_VascularPlants.csv # replace multiple spaces with tabs
 ```
 
-## Extract list for Bryophyta
+## Compile list for Bryophyta
 ### Extract content
-Convert the pdf into an open text file with [pdftotext](https://www.xpdfreader.com/pdftotext-man.html). The list with Ellenberg's values for Bryophyta starts at page 68 and ends with page 98.
+Convert the pdf into an open text file with [pdftotext](https://www.xpdfreader.com/pdftotext-man.html). The list with Ellenberg's values for Bryophyta starts at page 68 and ends at page 98.
 ```bash
 pdftotext -layout -f 68 -l 98 zusatzkapitel_zeigerwerte_der_pflanzen_mitteleuropas.pdf Ellenberg_Bryophyta.csv
 ```
 
-### Format the csv
+### Format csv
 First, remove the first nine lines and all leading space(s).
 Correct the character encoding error in *Encalypta rhaptocarpa* var. *trachymitria*.
 Next, remove all empty lines or those containing the keyword `Zeigerwerte` and replace emdash '–' with regular dash '-'.
@@ -67,16 +67,14 @@ sed -i '2,${ /Name/d }' Ellenberg_Bryophyta.csv # starting with the second line,
 sed -i -r 's/\s{2,}/\t/g' Ellenberg_Bryophyta.csv # replace multiple spaces with tabs
 ```
 
-
-
-## Extract list for lichens
+## Compile list for lichens
 ### Extract content
-Convert the pdf into an open text file with [pdftotext](https://www.xpdfreader.com/pdftotext-man.html). The list with Ellenberg's values for lichens starts at page 99 and ends with page 110.
+Convert the pdf into an open text file with [pdftotext](https://www.xpdfreader.com/pdftotext-man.html). The list with Ellenberg's values for lichens starts at page 99 and ends at page 110.
 ```bash
 pdftotext -layout -f 99 -l 110 zusatzkapitel_zeigerwerte_der_pflanzen_mitteleuropas.pdf Ellenberg_Lichens.csv
 ```
 
-### Format the csv
+### Format csv
 First, remove the first twelfe lines and all leading space(s).
 Next, remove all empty lines or those containing the keyword `Zeigerwerte` and replace emdash '–' with regular dash '-'.
 Last, remove all but the first header and delimite the file by tabs by converting multiple spaces into tabs while keeping the single space in the taxon name.
