@@ -24,8 +24,8 @@ sed -i -r 's/^ *//g # remove leading space(s)
     s/–/-/g # replace emdash with dash
     s/aqua-/aquatica)/g # complete Veronica [...] aquatica
     /^tica/d # delete line with hyphenated remainder
-	s/Cuscuta lupuliformis *x *6 *6 *8 *8 *0 *Tvp *S/Cuscuta lupuliformis  x  6  6  8  -  8  0  Tvp  S/ # fill gap in C. lupuliformis
-	s/nummularium ovatum \(num\. obs\.\) 8/nummularium ovatum \(num\. obs\.\)\t8/g # Add tab after Helianthemum n.
+    s/Cuscuta lupuliformis *x *6 *6 *8 *8 *0 *Tvp *S/Cuscuta lupuliformis  x  6  6  8  -  8  0  Tvp  S/ # fill gap in C. lupuliformis
+    s/nummularium ovatum \(num\. obs\.\) 8/nummularium ovatum \(num\. obs\.\)\t8/g # Add tab after Helianthemum n.
     $ d' Ellenberg_VascularPlants.csv # delete last line
 
 
