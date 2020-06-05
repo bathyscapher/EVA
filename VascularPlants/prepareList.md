@@ -1,4 +1,12 @@
 # Prepare list of Ellenberg's values
+1. Download the list
+1. Convert the pdf into an open text file with [pdftotext](https://www.xpdfreader.com/pdftotext-man.html).
+1. Structure the text with [sed](https://www.gnu.org/software/sed/).
+
+Separate files are created for vascular plants, Bryophyta and lichens as they differ in available indicators.
+Later, they are merged into one file.
+
+
 ## Download
 Download the official list with Ellenberg's values for vascular plants, mosses and lichens from [Uni-Taschenbücher](https://www.utb-shop.de/downloads/dl/file/id/27/zusatzkapitel_zeigerwerte_der_pflanzen_mitteleuropas.pdf).
 
@@ -8,12 +16,12 @@ wget https://www.utb-shop.de/downloads/dl/file/id/27/zusatzkapitel_zeigerwerte_d
 
 ## Extract list for vascular plants
 ### Extract content
-Convert the pdf into an open text file with [pdftotext](https://www.xpdfreader.com/pdftotext-man.html). The list with Ellenberg's values for vascular plants starts at page 7 and ends with page 67.
+The list with Ellenberg's values for vascular plants starts at page 7 and ends with page 67.
 ```bash
-pdftotext -layout -f 7 -l 67 zusatzkapitel_zeigerwerte_der_pflanzen_mitteleuropas.pdf EllenbergsValues.txt
+pdftotext -layout -f 7 -l 67 zusatzkapitel_zeigerwerte_der_pflanzen_mitteleuropas.pdf Ellenberg_VascularPlants.csv
 ```
 
-### Format the text file
+### Format the csv
 First, remove leading space(s).
 Next, remove all empty lines or those containing the keywords `Zeigerwerte` or `Angaben` and replace emdash '–' with regular dash '-'.
 Then, complete the hyphenated *Veronica [...] aquatica*, delete line with its remainder in the following line and delete the last line.
@@ -25,10 +33,13 @@ sed -i -r 's/^ *//g # remove leading space(s)
     s/–/-/g # replace emdash with dash
     s/aqua-/aquatica)/g # complete Veronica [...] aquatica
     /^tica/d # delete line with hyphenated remainder
-    $ d' Ellenberg_VascularPlants.txt # delete last line
+    $ d' Ellenberg_VascularPlants.csv # delete last line
 
-sed -i '2,${ /Name/d }' EllenbergsValues.txt # starting with the second line, remove all lines with keyword
-sed -i -r 's/\s{2,}/\t/g' EllenbergsValues.txt # replace multiple spaces with tabs
+sed -i '2,${ /Name/d }' Ellenberg_VascularPlants.csv # skip first line and remove all lines with keyword
+
+
+## Replace multiple spaces with tabs (yields a tab delimited csv)
+sed -i -r 's/\s{2,}/\t/g' Ellenberg_VascularPlants.csv
 ```
 
 ## Extract list for Bryophyta
@@ -77,6 +88,6 @@ sed -i -r '1,12d # remove first 12 lines
     s/–/-/g # replace emdash with dash
     $ d' Ellenberg_Lichens.csv # delete last line
 
-sed -i '2,${ /Name/d }' EllenbergsValues.txt # starting with the second line, remove all lines with keyword
-sed -i -r 's/\s{2,}/\t/g' EllenbergsValues.txt # replace multiple spaces with tabs
+sed -i '2,${ /Name/d }' Ellenberg_Lichens.csv # starting with the second line, remove all lines with keyword
+sed -i -r 's/\s{2,}/\t/g' Ellenberg_Lichens.csv # replace multiple spaces with tabs
 ```
