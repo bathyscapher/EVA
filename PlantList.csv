@@ -1,0 +1,153 @@
+Site	Family	Species
+SiteA	Alismataceae	Alisma plantago-aquatica L.
+SiteA	Apiaceae	Peucedanum palustre (L.) Moench
+SiteA	Araliaceae	Hydrocotyle vulgaris L.
+SiteA	Asteraceae	Cirsium palustre (L.) Scop.
+SiteA	Betulaceae	Alnus glutinosa (L.) Gaertn.
+SiteA	Caprifoliaceae	Valeriana dioica L.
+SiteA	Cyperaceae	Carex davalliana Sm.
+SiteA	Cyperaceae	Carex echinata Murray
+SiteA	Cyperaceae	Carex elata All.
+SiteA	Cyperaceae	Carex elongata L.
+SiteA	Cyperaceae	Carex hostiana DC.
+SiteA	Cyperaceae	Carex lasiocarpa Ehrh.
+SiteA	Cyperaceae	Carex nigra (L.) Reichard
+SiteA	Cyperaceae	Carex panicea L.
+SiteA	Cyperaceae	Carex vesicaria L.
+SiteA	Cyperaceae	Eleocharis palustris (L.) Roem. & Schult.
+SiteA	Cyperaceae	Eriophorum angustifolium Honck.
+SiteA	Cyperaceae	Eriophorum latifolium Hoppe
+SiteA	Equisetaceae	Equisetum palustre L.
+SiteA	Iridaceae	Iris pseudacorus L.
+SiteA	Juncaceae	Juncus conglomeratus L.
+SiteA	Juncaceae	Juncus effusus L.
+SiteA	Lamiaceae	Lycopus europaeus L.
+SiteA	Lamiaceae	Mentha aquatica L.
+SiteA	Lamiaceae	Scutellaria galericulata L.
+SiteA	Lythraceae	Lythrum salicaria L.
+SiteA	Onagraceae	Epilobium palustre L.
+SiteA	Orchidaceae	Liparis loeselii (L.) Rich.
+SiteA	Plantaginaceae	Veronica scutellata L.
+SiteA	Poaceae	Molinia caerulea (L.) Moench
+SiteA	Poaceae	Phragmites australis (Cav.) Steud.
+SiteA	Potamogetonaceae	Potamogeton natans L.
+SiteA	Primulaceae	Lysimachia vulgaris L.
+SiteA	Ranunculaceae	Ranunculus flammula L.
+SiteA	Rhamnaceae	Frangula alnus Mill.
+SiteA	Rosaceae	Filipendula ulmaria (L.) Maxim.
+SiteA	Rosaceae	Potentilla erecta (L.) Raeusch.
+SiteA	Rosaceae	Potentilla palustris (L.) Scop.
+SiteA	Rubiaceae	Galium palustre L.
+SiteA	Salicaceae	Salix repens L.
+SiteA	Thelypteridaceae	Thelypteris palustris Schott
+SiteB	Asteraceae	Cirsium palustre (L.) Scop.
+SiteB	Asteraceae	Cirsium rivulare (Jacq.) All.
+SiteB	Caryophyllaceae	Silene flos-cuculi (L.) Clairv.
+SiteB	Cyperaceae	Carex canescens L.
+SiteB	Cyperaceae	Carex limosa L.
+SiteB	Cyperaceae	Carex nigra (L.) Reichard
+SiteB	Cyperaceae	Carex pauciflora Lightf.
+SiteB	Cyperaceae	Carex rostrata Stokes
+SiteB	Cyperaceae	Eriophorum angustifolium Honck.
+SiteB	Cyperaceae	Eriophorum vaginatum L.
+SiteB	Cyperaceae	Scirpus sylvaticus L.
+SiteB	Cyperaceae	Trichophorum cespitosum (L.) Hartm.
+SiteB	Cyperaceae	Trichophorum cespitosum (L.) Hartm. subsp. cespitosum
+SiteB	Droseraceae	Drosera rotundifolia L.
+SiteB	Ericaceae	Andromeda polifolia L.
+SiteB	Ericaceae	Vaccinium microcarpum (Rupr.) Schmalh.
+SiteB	Ericaceae	Vaccinium oxycoccos L.
+SiteB	Juncaceae	Juncus effusus L.
+SiteB	Juncaceae	Juncus filiformis L.
+SiteB	Menyanthaceae	Menyanthes trifoliata L.
+SiteB	Onagraceae	Epilobium palustre L.
+SiteB	Orchidaceae	Dactylorhiza majalis (Rchb.) P. F. Hunt & Summerh.
+SiteB	Poaceae	Glyceria notata Chevall.
+SiteB	Poaceae	Helictotrichon pubescens (Huds.) Pilg.
+SiteB	Poaceae	Hierochloë odorata (L.) P. Beauv.
+SiteB	Poaceae	Phragmites australis (Cav.) Steud.
+SiteB	Polygonaceae	Polygonum bistorta L.
+SiteB	Ranunculaceae	Ranunculus acris subsp. friesianus (Jord.) Syme
+SiteB	Rosaceae	Filipendula ulmaria (L.) Maxim.
+SiteB	Rosaceae	Fragaria vesca L.
+SiteB	Rosaceae	Potentilla anserina L.
+SiteB	Rosaceae	Potentilla erecta (L.) Raeusch.
+SiteB	Rosaceae	Potentilla palustris (L.) Scop.
+SiteB	Rosaceae	Sorbus aucuparia L.
+SiteB	Rubiaceae	Galium palustre aggr.
+SiteB	Rubiaceae	Galium palustre L.
+SiteB	Scheuchzeriaceae	Scheuchzeria palustris L.
+SiteC	Cyperaceae	Carex canescens L.
+SiteC	Cyperaceae	Carex echinata Murray
+SiteC	Cyperaceae	Carex nigra (L.) Reichard
+SiteC	Cyperaceae	Carex pauciflora Lightf.
+SiteC	Cyperaceae	Carex rostrata Stokes
+SiteC	Cyperaceae	Eriophorum vaginatum L.
+SiteC	Ericaceae	Andromeda polifolia L.
+SiteC	Ericaceae	Calluna vulgaris (L.) Hull
+SiteC	Ericaceae	Vaccinium myrtillus L.
+SiteC	Ericaceae	Vaccinium oxycoccos L.
+SiteC	Ericaceae	Vaccinium uliginosum aggr.
+SiteC	Ericaceae	Vaccinium vitis-idaea L.
+SiteC	Juncaceae	Juncus conglomeratus L.
+SiteC	Orchidaceae	Dactylorhiza maculata (L.) Soó
+SiteC	Orchidaceae	Listera cordata (L.) R. Br.
+SiteC	Pinaceae	Picea abies (L.) H. Karst.
+SiteC	Pinaceae	Pinus mugo subsp. uncinata (DC.) Domin
+SiteD	Apiaceae	Angelica sylvestris L.
+SiteD	Asteraceae	Crepis paludosa (L.) Moench
+SiteD	Betulaceae	Betula pubescens Ehrh.
+SiteD	Brassicaceae	Cardamine pratensis aggr.
+SiteD	Caprifoliaceae	Knautia dipsacifolia Kreutzer
+SiteD	Caprifoliaceae	Knautia godetii Reut.
+SiteD	Caprifoliaceae	Succisa pratensis Moench
+SiteD	Cyperaceae	Carex canescens L.
+SiteD	Cyperaceae	Carex chordorrhiza L. f.
+SiteD	Cyperaceae	Carex davalliana Sm.
+SiteD	Cyperaceae	Carex echinata Murray
+SiteD	Cyperaceae	Carex flava aggr.
+SiteD	Cyperaceae	Carex lasiocarpa Ehrh.
+SiteD	Cyperaceae	Carex limosa L.
+SiteD	Cyperaceae	Carex nigra (L.) Reichard
+SiteD	Cyperaceae	Carex panicea L.
+SiteD	Cyperaceae	Carex paniculata L.
+SiteD	Cyperaceae	Carex pauciflora Lightf.
+SiteD	Cyperaceae	Carex pulicaris L.
+SiteD	Cyperaceae	Carex rostrata Stokes
+SiteD	Cyperaceae	Eriophorum angustifolium Honck.
+SiteD	Cyperaceae	Eriophorum latifolium Hoppe
+SiteD	Cyperaceae	Eriophorum vaginatum L.
+SiteD	Cyperaceae	Trichophorum cespitosum (L.) Hartm.
+SiteD	Droseraceae	Drosera ×obovata Mert. & W. D. J. Koch
+SiteD	Droseraceae	Drosera rotundifolia L.
+SiteD	Ericaceae	Andromeda polifolia L.
+SiteD	Ericaceae	Pyrola rotundifolia L.
+SiteD	Ericaceae	Vaccinium myrtillus L.
+SiteD	Ericaceae	Vaccinium oxycoccos L.
+SiteD	Ericaceae	Vaccinium uliginosum aggr.
+SiteD	Ericaceae	Vaccinium uliginosum L.
+SiteD	Ericaceae	Vaccinium vitis-idaea L.
+SiteD	Lentibulariaceae	Pinguicula vulgaris L.
+SiteD	Melanthiaceae	Veratrum album L.
+SiteD	Menyanthaceae	Menyanthes trifoliata L.
+SiteD	Orchidaceae	Dactylorhiza maculata (L.) Soó
+SiteD	Pinaceae	Picea abies (L.) H. Karst.
+SiteD	Pinaceae	Pinus mugo subsp. uncinata (DC.) Domin
+SiteD	Pinaceae	Pinus sylvestris L.
+SiteD	Poaceae	Anthoxanthum odoratum L.
+SiteD	Poaceae	Briza media L.
+SiteD	Poaceae	Festuca rubra aggr.
+SiteD	Poaceae	Molinia caerulea (L.) Moench
+SiteD	Polygonaceae	Polygonum bistorta L.
+SiteD	Ranunculaceae	Caltha palustris L.
+SiteD	Ranunculaceae	Ranunculus acris L.
+SiteD	Ranunculaceae	Ranunculus ficaria L.
+SiteD	Rosaceae	Filipendula ulmaria (L.) Maxim.
+SiteD	Rosaceae	Potentilla erecta (L.) Raeusch.
+SiteD	Rosaceae	Potentilla palustris (L.) Scop.
+SiteD	Rosaceae	Sorbus aria (L.) Crantz
+SiteD	Rosaceae	Sorbus aucuparia L.
+SiteD	Rubiaceae	Galium uliginosum L.
+SiteD	Salicaceae	Salix cinerea L.
+SiteD	Salicaceae	Salix repens L.
+SiteD	Scheuchzeriaceae	Scheuchzeria palustris L.
