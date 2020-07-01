@@ -42,23 +42,38 @@ vascu <- read.table("PlantList.csv", sep = "\t", header = TRUE)
 
 
 ### Format species names
-## Delete all abbreviated author names
-vascu$SpeciesShort <- gsub("[A-Z]{1,2}[a-z]*\\.", "", vascu$Species,
-                           perl = TRUE)
+## Replace accented letters
+plants$SpeciesShort <- chartr("áéíóúňäöü", "aeiounaou", plants$Taxon)
 
 
-## Delete all ampersands
-vascu$SpeciesShort <- gsub("\\&", "", vascu$SpeciesShort, perl = TRUE)
+## Delete abbreviated author names
+plants$SpeciesShort <- gsub("[A-Z]{1,2}[a-z]*\\.", "", plants$SpeciesShort,
+                            perl = TRUE)
 
 
-## Delete all  author names (match characters in a wide accented range)
-vascu$SpeciesShort <- gsub("[A-Z]{1,2}[a-zà-ÿ]* *$", "",
-                           vascu$SpeciesShort, perl = TRUE)
+## Delete author names
+plants$SpeciesShort <- gsub(" [A-Z]{1,2}[a-z]*", "",
+                            plants$SpeciesShort, perl = TRUE)
+
+
+## Delete ampersands
+plants$SpeciesShort <- gsub("\\&", "", plants$SpeciesShort, perl = TRUE)
 
 
 ## Delete brackets and trailing white space
-vascu$SpeciesShort <- gsub(" *$", "", gsub("\\(\\)", "", vascu$SpeciesShort))
+plants$SpeciesShort <- gsub(" *$", "", gsub("\\(\\)", "", plants$SpeciesShort))
 
+
+## Delete author names in brackets
+plants$SpeciesShort <- gsub("\\([A-Z]{1,2}[a-z]* *\\)", "",
+                            plants$SpeciesShort, perl = TRUE)
+
+
+## Reduce multiple spaces
+plants$SpeciesShort <- gsub(" {2,}", " ", plants$SpeciesShort)
+
+
+# levels(as.factor(plants$SpeciesShort))
 
 ## Add empty columns for Ellenberg's values to species list
 vascu$CheckPoint <- NA
