@@ -2,7 +2,7 @@
 ################################################################################
 ################################################################################
 ################################################################################
-### Match Ellenberg's indicator values with a species list
+### Match Ellenberg's indicator values with a given set of species
 ################################################################################
 
 
@@ -105,8 +105,10 @@ EVA <- function(matches, index){
 vascu[, 5:15] <- do.call(rbind, Map(EVA, gottem, seq_along(gottem)))
 
 
-## See mismatches
+## Mismatches
 mismatches <- vascu[grep("match", vascu$CheckPoint), ]
+
+levels(as.factor(mismatches$SpeciesShort))
 
 
 ################################################################################
