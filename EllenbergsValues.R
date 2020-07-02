@@ -43,37 +43,42 @@ vascu <- read.table("PlantList.csv", sep = "\t", header = TRUE)
 
 ### Format species names
 ## Replace accented letters
-plants$SpeciesShort <- chartr("áéíóúňäöü", "aeiounaou", plants$Taxon)
+vascu$SpeciesShort <- chartr("áéíóúňäöü", "aeiounaou", vascu$Species)
 
 
 ## Delete abbreviated author names
-plants$SpeciesShort <- gsub("[A-Z]{1,2}[a-z]*\\.", "", plants$SpeciesShort,
+vascu$SpeciesShort <- gsub("[A-Z]{1,2}[a-z]*\\.", "", vascu$SpeciesShort,
                             perl = TRUE)
 
 
 ## Delete author names
-plants$SpeciesShort <- gsub(" [A-Z]{1,2}[a-z]*", "",
-                            plants$SpeciesShort, perl = TRUE)
+vascu$SpeciesShort <- gsub(" [A-Z]{1,2}[a-z]*", "",
+                            vascu$SpeciesShort, perl = TRUE)
 
 
 ## Delete ampersands
-plants$SpeciesShort <- gsub("\\&", "", plants$SpeciesShort, perl = TRUE)
+vascu$SpeciesShort <- gsub("\\&", "", vascu$SpeciesShort, perl = TRUE)
 
 
 ## Delete brackets and trailing white space
-plants$SpeciesShort <- gsub(" *$", "", gsub("\\(\\)", "", plants$SpeciesShort))
+vascu$SpeciesShort <- gsub(" *$", "", gsub("\\(\\)", "", vascu$SpeciesShort))
 
 
 ## Delete author names in brackets
-plants$SpeciesShort <- gsub("\\([A-Z]{1,2}[a-z]* *\\)", "",
-                            plants$SpeciesShort, perl = TRUE)
+vascu$SpeciesShort <- gsub("\\([A-Z]{1,2}[a-z]* *\\)", "",
+                            vascu$SpeciesShort, perl = TRUE)
 
 
 ## Reduce multiple spaces
-plants$SpeciesShort <- gsub(" {2,}", " ", plants$SpeciesShort)
+vascu$SpeciesShort <- gsub(" {2,}", " ", vascu$SpeciesShort)
 
 
-# levels(as.factor(plants$SpeciesShort))
+# levels(as.factor(vascu$SpeciesShort))
+
+
+## Get column number + 1
+cols <- dim(vascu)[2] + 1
+
 
 ## Add empty columns for Ellenberg's values to species list
 vascu$CheckPoint <- NA
@@ -83,26 +88,26 @@ vascu[names(ev[2:11])] <- NA
 ################################################################################
 ### Fuzzy match by species. Set cost to conserve names (no insertions and
 ### substitutions, deletions allowed)
-gottem <- lapply(vascu$SpeciesShort, agrep, x = ev$Name, value = FALSE,
-                 max.distance = c(all = 1,
-                                  deletions = 2,
-                                  insertions = 2,
-                                  substitutions = 0))
+gotem <- lapply(vascu$SpeciesShort, agrep, x = ev$Name, value = FALSE,
+                max.distance = c(all = 1,
+                                 deletions = 2,
+                                 insertions = 2,
+                                 substitutions = 0))
 
 
 ################################################################################
 ### Fill Ellenberg's values into vascu
 EVA <- function(matches, index){
   if(length(matches) == 1)
-    {vascu[index, 5:15] <- ev[matches, ]}
+    {vascu[index, cols:(cols + 10)] <- ev[matches, ]}
   else
-    {vascu[index, 5:15] <- c(paste(length(matches), "match(es)"),
+    {vascu[index, cols:(cols + 10)] <- c(paste(length(matches), "match(es)"),
                              rep(NA, 10))}
   }
 
 
 ## Update target data.frame
-vascu[, 5:15] <- do.call(rbind, Map(EVA, gottem, seq_along(gottem)))
+vascu[, cols:(cols + 10)] <- do.call(rbind, Map(EVA, gotem, seq_along(gotem)))
 
 
 ## Mismatches
