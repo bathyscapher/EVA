@@ -12,7 +12,7 @@ library("plyr")
 rm(list = ls())
 
 
-setwd("~/EVA/")
+setwd("~/EVA/EllenbergsValuesAutomaton/")
 
 
 ################################################################################
