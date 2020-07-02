@@ -11,3 +11,4 @@ To match a given set of plant species with Ellenberg's indicator values:
 * To manually revise mismatches, keep in mind that
   * the official list is incomplete what yields zero matches
   * the presence of subspecies and aggregates will yield multiple matches
+* At the moment, the script needs modification to read in the set of plant species. It assumes the binomial name in a column `Species` (although that can easily be changed)
