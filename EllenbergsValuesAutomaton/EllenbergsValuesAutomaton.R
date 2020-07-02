@@ -110,7 +110,7 @@ EVA <- function(matches, index){
 vascu[, cols:(cols + 10)] <- do.call(rbind, Map(EVA, gotem, seq_along(gotem)))
 
 
-## Mismatches
+## Revise mismatches
 mismatches <- vascu[grep("match", vascu$CheckPoint), ]
 
 levels(as.factor(mismatches$SpeciesShort))
