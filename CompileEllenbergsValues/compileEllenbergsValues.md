@@ -1,11 +1,11 @@
 # Prepare list of Ellenberg's values
-To compile tab separated csv files with Ellenberg's values:
+To compile tab separated csv files with Ellenberg's indicator values:
 1. Download the list
-1. Convert the pdf into an open text file with [pdftotext](https://www.xpdfreader.com/pdftotext-man.html).
+1. Convert the pdf to an open text file with [pdftotext](https://www.xpdfreader.com/pdftotext-man.html).
 1. Structure the text with [sed](https://www.gnu.org/software/sed/) and [perl](https://www.perl.org/).
 
 Separate files are created for vascular plants, Bryophyta and lichens as they differ in available indicators.
-Later, they are merged into one file.
+Later, they are merged into a single file in R.
 
 All steps are unified in `compileEllenbergsValues.sh` that is ready to run on a Linux shell.
 
@@ -83,7 +83,7 @@ pdftotext -layout -f 99 -l 110 zusatzkapitel_zeigerwerte_der_pflanzen_mitteleuro
 ```
 
 ### Format csv
-First, remove the first twelfe lines and all leading space(s).
+First, remove the first twelve lines and all leading space(s).
 Next, remove all empty lines or those containing the keyword `Zeigerwerte` and replace emdash '–' with regular dash '-'.
 Last, remove all but the first header and delimite the file by tabs by converting multiple spaces into tabs while keeping the single space in the taxon name.
 ```bash
